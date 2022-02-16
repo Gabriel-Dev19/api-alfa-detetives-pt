@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 var cors = require('cors')
+var bodyParser = require('body-parser');
 
 app.use(cors({
   origin:'http://localhost:3000', 
