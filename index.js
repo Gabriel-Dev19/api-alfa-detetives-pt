@@ -59,12 +59,9 @@ app.post('/api/products/create', function(req, res) {
     name: req.body.name,
     description: req.body.description,
     popularity: req.body.popularity,
-    images: req.body.images[
-      { 
-        url: req.body.images.url,
-        alt: req.body.images.alt
-      }
-    ]
+    images: req.body.images,
+    url: req.body.images.url,
+    alt: req.body.images.alt
   };
   dataBase.push(newProduct);
   res.json(dataBase)
