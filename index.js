@@ -51,7 +51,7 @@ app.get('/api/products', (req, res) => {
 app.post('/api/products/create', function(req, res) {
   const body = req.body
   dataBase.push(body);
-  return res.json(body)
+  return res.json(dataBase)
 });
 
 app.listen(PORT, () => {
