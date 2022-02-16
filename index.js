@@ -61,7 +61,7 @@ app.post('/api/products/create', function(req, res) {
   //   ]
   // };
   // dataBase.push(newProduct);
-  return res.json(dataBase)
+  res.json(dataBase)
   // var newProduct = {
   //   name: req.body.name,
   //   description: req.body.description,
