@@ -49,6 +49,8 @@ app.get('/api/products', (req, res) => {
 })
 
 app.post('/api/products/create', function(req, res) {
+  const body = req.body
+  dataBase.push(body);
   var newProduct = {
     name: req.body.name,
     description: req.body.description,
@@ -60,6 +62,17 @@ app.post('/api/products/create', function(req, res) {
   };
   dataBase.push(newProduct);
   return res.json(dataBase)
+  // var newProduct = {
+  //   name: req.body.name,
+  //   description: req.body.description,
+  //   popularity: req.body.popularity,
+  //   images: [
+  //     { url: req.body.images.url },
+  //     { alt: req.body.images.alt }
+  //   ]
+  // };
+  // dataBase.push(newProduct);
+  // return res.json(dataBase)
 });
 
 app.listen(PORT, () => {
