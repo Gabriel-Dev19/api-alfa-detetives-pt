@@ -28,7 +28,7 @@ app.use(function(req, res, next) {
 
 let dataBase = [
   {
-    id: Date.now,
+    id: Date.now(),
     name: "Alguma coisa",
     description: "Alguma coisa qualquer",
     popularity: "99",
@@ -55,7 +55,7 @@ app.get('/api/products', (req, res) => {
 
 app.post('/api/products/create', function(req, res) {
   var newProduct = {
-    id: Date.now,
+    id: Date.now(),
     name: req.body.name,
     description: req.body.description,
     popularity: req.body.popularity,
