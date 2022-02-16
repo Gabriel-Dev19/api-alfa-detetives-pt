@@ -1,5 +1,12 @@
 const express = require('express');
 const app = express();
+var cors = require('cors')
+
+app.use(cors({
+  origin:'http://localhost:3000', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200
+}))
 
 const PORT = process.env.PORT || 8877;
 
@@ -8,7 +15,6 @@ app.use(function(req, res, next) {
   // an API server in conjunction with something like webpack-dev-server.
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,PATCH,POST,DELETE');
 
   // Disable caching so we'll always get the latest comments.
