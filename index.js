@@ -48,7 +48,7 @@ app.get('/api/products', (req, res) => {
   res.json(dataBase)
 })
 
-app.post('/api/product/create', function(req, res) {
+app.post('/api/products/create', function(req, res) {
   const body = req.body
   dataBase.push(body);
   res.json(body)
