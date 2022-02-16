@@ -10,6 +10,9 @@ app.use(cors({
 
 const PORT = process.env.PORT || 8877;
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
 app.use(function(req, res, next) {
   // Set permissive CORS header - this allows this server to be used only as
   // an API server in conjunction with something like webpack-dev-server.
@@ -61,7 +64,7 @@ app.post('/api/products/create', function(req, res) {
     ]
   };
   dataBase.push(newProduct);
-  res.send(dataBase)
+  res.json(dataBase)
   // var newProduct = {
   //   name: req.body.name,
   //   description: req.body.description,
