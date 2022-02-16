@@ -61,8 +61,8 @@ app.post('/api/products/create', function(req, res) {
     popularity: req.body.popularity,
     images: [
       { 
-        url: req.images.url,
-        alt: req.images.alt
+        url: req.body.images.url,
+        alt: req.body.images.alt
       }
     ]
   };
