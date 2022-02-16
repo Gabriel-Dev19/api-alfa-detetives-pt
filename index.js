@@ -28,6 +28,7 @@ app.use(function(req, res, next) {
 
 let dataBase = [
   {
+    id: Date.now,
     name: "Alguma coisa",
     description: "Alguma coisa qualquer",
     popularity: "99",
@@ -53,9 +54,8 @@ app.get('/api/products', (req, res) => {
 })
 
 app.post('/api/products/create', function(req, res) {
-  // const body = req.body
-  // dataBase.push(body);
   var newProduct = {
+    id: Date.now,
     name: req.body.name,
     description: req.body.description,
     popularity: req.body.popularity,
@@ -66,17 +66,18 @@ app.post('/api/products/create', function(req, res) {
   };
   dataBase.push(newProduct);
   res.json(dataBase)
-  // var newProduct = {
-  //   name: req.body.name,
-  //   description: req.body.description,
-  //   popularity: req.body.popularity,
-  //   images: [
-  //     { url: req.body.images.url },
-  //     { alt: req.body.images.alt }
-  //   ]
-  // };
-  // dataBase.push(newProduct);
-  // return res.json(dataBase)
+});
+
+app.delete('/api/products/delete/:id', function(req, res) {
+  for(var i = 0; i <= dataBase.length; i++)
+    {
+      if(dataBase[i]['id'] == req.params.id)
+      {
+        dataBase.splice(i, 1);
+        res.json(dataBase);
+        break;
+      }
+    }
 });
 
 app.listen(PORT, () => {
