@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const fs = require('fs')
 var cors = require('cors')
 var bodyParser = require('body-parser');
 
@@ -26,28 +27,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-let dataBase = [
-  {
-    id: Date.now(),
-    name: "Alguma coisa",
-    description: "Alguma coisa qualquer",
-    popularity: "99",
-    images: [
-      {
-        url: 'https://aaaa',
-        alt: 'Alt'
-      },
-      {
-        url: 'https://aaaa',
-        alt: 'Alt'
-      },
-      {
-        url: 'https://aaaa',
-        alt: 'Alt'
-      }
-    ]
-  }
-]
+let dataBase = []
 
 app.get('/api/products', (req, res) => {
   res.json(dataBase)
@@ -65,6 +45,14 @@ app.post('/api/products/create', function(req, res) {
   };
   dataBase.push(newProduct);
   res.json(dataBase)
+
+  fs.writeFile('./save.json', JSON.stringify(dataBase, null, 2), function(err) {
+      if (err) {
+          console.error(err);
+          process.exit(1);
+      }
+      res.json(products);
+  });
 });
 
 app.delete('/api/products/delete/:id', function(req, res) {
