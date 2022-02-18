@@ -45,12 +45,6 @@ app.post('/api/products/create', function(req, res) {
   };
   dataBase.push(newProduct);
   res.json(dataBase)
-
-  fs.writeFile('./save.json', JSON.stringify(dataBase, null, 2), function(err) {
-      if (err) {
-          console.error(err);
-      }
-  });
 });
 
 app.delete('/api/products/delete/:id', function(req, res) {
