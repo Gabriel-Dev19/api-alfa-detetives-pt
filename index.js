@@ -49,9 +49,7 @@ app.post('/api/products/create', function(req, res) {
   fs.writeFile('./save.json', JSON.stringify(dataBase, null, 2), function(err) {
       if (err) {
           console.error(err);
-          process.exit(1);
       }
-      res.json(products);
   });
 });
 
