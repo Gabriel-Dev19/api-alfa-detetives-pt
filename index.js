@@ -42,18 +42,45 @@ app.get('/api/products', (req, res) => {
 })
 
 app.post('/api/products/create', function(req, res) {
-  var newProduct = {
-    id: Date.now(),
-    name: req.body.name,
-    description: req.body.description,
-    popularity: req.body.popularity,
-    link: req.body.link,
-    images: req.body.images,
-    url: req.body.images.url,
-    alt: req.body.images.alt
-  };
-  dataBase.push(newProduct);
-  res.json(dataBase)
+  // var newProduct = {
+  //   id: Date.now(),
+  //   name: req.body.name,
+  //   description: req.body.description,
+  //   popularity: req.body.popularity,
+  //   link: req.body.link,
+  //   images: req.body.images,
+  //   url: req.body.images.url,
+  //   alt: req.body.images.alt
+  // };
+  // dataBase.push(newProduct);
+  // res.json(dataBase)
+
+  fs.readFile(PRODUCTS_FILE, function(err, data) {
+    if (err) {
+        console.error(err);
+        process.exit(1);
+    }
+    var products = JSON.parse(data);
+
+    var newProduct = {
+      id: Date.now(),
+      name: req.body.name,
+      description: req.body.description,
+      popularity: req.body.popularity,
+      link: req.body.link,
+      images: req.body.images,
+      url: req.body.images.url,
+      alt: req.body.images.alt
+    };
+    products.push(newProduct);
+    fs.writeFile(PRODUCTS_FILE, JSON.stringify(products, null, 2), function(err) {
+        if (err) {
+            console.error(err);
+            process.exit(1);
+        }
+        res.json(products);
+    });
+});
 });
 
 app.delete('/api/products/delete/:id', function(req, res) {
