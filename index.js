@@ -14,6 +14,8 @@ const PORT = process.env.PORT || 8877;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+a
+var PRODUCTS_FILE = './save.json'
 
 app.use(function(req, res, next) {
   // Set permissive CORS header - this allows this server to be used only as
@@ -30,7 +32,13 @@ app.use(function(req, res, next) {
 let dataBase = []
 
 app.get('/api/products', (req, res) => {
-  res.json(dataBase)
+  fs.readFile(PRODUCTS_FILE, function(err, data) {
+    if (err) {
+        console.error(err);
+        process.exit(1);
+    }
+    res.json(JSON.parse(data));
+  });
 })
 
 app.post('/api/products/create', function(req, res) {
