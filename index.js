@@ -97,7 +97,7 @@ app.post('/api/products/create', function(req, res) {
             console.error(err);
             process.exit(1);
         }
-        res.send(products);
+        res.json(products);
     });
 });
 });
@@ -128,7 +128,7 @@ app.delete('/api/products/delete/:id', function(req, res) {
             console.error(err)
             process.exit(1)
           }
-          res.send(products)
+          res.json(products)
         })
         break
       }
