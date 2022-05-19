@@ -31,7 +31,7 @@ app.use(function(req, res, next) {
 
 let dataBase = []
 
-app.get('/api/products', (req, res) => {
+app.get('/', (req, res) => {
   fs.readFile(PRODUCTS_FILE, function(err, data) {
     if (err) {
         console.error(err);
