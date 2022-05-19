@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var corsConfig = {
   origin: '*',
   methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
-  allowedHeaders: 'X-Custom-Header, Upgrade-Insecure-Requests',
+  allowedHeaders: 'Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers',
   credentials: true,            //access-control-allow-credentials:true
   optionSuccessStatus:200
 }
