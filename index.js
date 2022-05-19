@@ -5,7 +5,7 @@ var cors = require('cors')
 var bodyParser = require('body-parser');
 
 app.use(cors({
-  origin: '*', 
+  origin: 'https://promo-faster.herokuapp.com', 
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200
 }))
