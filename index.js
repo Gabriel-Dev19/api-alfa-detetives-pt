@@ -13,17 +13,17 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 var PRODUCTS_FILE = './save.json'
 
-app.use(function(req, res, next) {
-  // Set permissive CORS header - this allows this server to be used only as
-  // an API server in conjunction with something like webpack-dev-server.
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Acept, Origin, X-Request-Width');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,PATCH,POST,DELETE');
-
-  // Disable caching so we'll always get the latest comments.
-  res.setHeader('Cache-Control', 'no-cache');
-  next();
-});
+// app.use(function(req, res, next) {
+//   // Set permissive CORS header - this allows this server to be used only as
+//   // an API server in conjunction with something like webpack-dev-server.
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Acept, Origin, X-Request-Width');
+//   res.header('Access-Control-Allow-Methods', 'GET,PUT,PATCH,POST,DELETE');
+// 
+//   // Disable caching so we'll always get the latest comments.
+//   res.setHeader('Cache-Control', 'no-cache');
+//   next();
+// });
 
 import dataBase from './save.json'
 
