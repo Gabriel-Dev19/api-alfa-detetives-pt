@@ -2,7 +2,6 @@
   "version": 2,
   "headers": [
     {
-      "source": "/api/(.*)",
       "headers": [
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
@@ -15,6 +14,12 @@
     {
       "src": "index.js",
       "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api(.*)",
+      "dest": "index.js"
     }
   ]
 }
