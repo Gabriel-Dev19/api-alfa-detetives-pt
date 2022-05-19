@@ -12,7 +12,7 @@ var bodyParser = require('body-parser');
 //   optionSuccessStatus: 204
 // }
 // 
-app.use(cors())
+//app.use(cors())
 
 const PORT = process.env.PORT || 8877;
 
@@ -30,6 +30,12 @@ var PRODUCTS_FILE = './save.json'
 //   //res.setHeader('Cache-Control', 'no-cache');
 //   next();
 // });
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 import dataBase from './save.json'
 
