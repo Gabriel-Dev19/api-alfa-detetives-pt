@@ -12,7 +12,7 @@ var corsConfig = {
   optionSuccessStatus:200
 }
 
-app.use(cors())
+app.use(cors(corsConfig))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -26,10 +26,6 @@ app.use(function(req, res, next) {
   // Disable caching so we'll always get the latest comments.
   res.setHeader('Cache-Control', 'no-cache');
   next();
-});
-
-app.get("/", (req, res) => {
-  res.send("Express on Vercel");
 });
 
 app.get('/api/products', (req, res) => {
