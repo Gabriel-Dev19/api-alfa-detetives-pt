@@ -59,7 +59,7 @@ app.get('/api/product/:id', function(req, res) {
       {
           if(json[i]['id'] == req.params.id)
           {
-              res.json(json[i]);
+              res.send(json[i]);
               break;
           }
       }
@@ -97,7 +97,7 @@ app.post('/api/products/create', function(req, res) {
             console.error(err);
             process.exit(1);
         }
-        res.json(products);
+        res.send(products);
     });
 });
 });
@@ -128,7 +128,7 @@ app.delete('/api/products/delete/:id', function(req, res) {
             console.error(err)
             process.exit(1)
           }
-          res.json(products)
+          res.send(products)
         })
         break
       }
