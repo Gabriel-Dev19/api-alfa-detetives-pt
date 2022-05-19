@@ -31,10 +31,6 @@ app.use(function(req, res, next) {
 
 import dataBase from './save.json'
 
-app.get("/", (req, res) => {
-  res.send("Express on Vercel");
-});
-
 app.get('/api/products', (req, res) => {
   fs.readFile(PRODUCTS_FILE, function(err, data) {
     if (err) {
