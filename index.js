@@ -36,7 +36,6 @@ app.get("/", (req, res) => {
 });
 
 app.get('/api/products', (req, res) => {
-  res.send(dataBase);
   fs.readFile(PRODUCTS_FILE, function(err, data) {
     if (err) {
         console.error(err);
