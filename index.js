@@ -1,14 +1,8 @@
 const express = require('express');
 const app = express();
 const fs = require('fs')
-var cors = require('cors')
+// var cors = require('cors')
 var bodyParser = require('body-parser');
-
-app.use(cors({
-  origin: ['http://localhost:3000', 'https://apipromofaster.vercel.app', 'https://promo-faster.herokuapp.com', 'http://promo-faster.herokuapp.com'], 
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200
-}))
 
 const PORT = process.env.PORT || 8877;
 
