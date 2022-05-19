@@ -5,7 +5,7 @@ var cors = require('cors')
 var bodyParser = require('body-parser');
 
 app.use(cors({
-  origin:'http://localhost:3000', 
+  origin: ['http://localhost:3000/', 'https://promo-faster.herokuapp.com/', 'http://promo-faster.herokuapp.com/'], 
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200
 }))
@@ -41,20 +41,28 @@ app.get('/api/products', (req, res) => {
   });
 })
 
-app.post('/api/products/create', function(req, res) {
-  // var newProduct = {
-  //   id: Date.now(),
-  //   name: req.body.name,
-  //   description: req.body.description,
-  //   popularity: req.body.popularity,
-  //   link: req.body.link,
-  //   images: req.body.images,
-  //   url: req.body.images.url,
-  //   alt: req.body.images.alt
-  // };
-  // dataBase.push(newProduct);
-  // res.json(dataBase)
+app.get('/api/product/:id', function(req, res) {
 
+  fs.readFile(PRODUCTS_FILE, function(err, data) {
+      if (err) {
+          console.error(err);
+          process.exit(1);
+      }
+
+      var json = JSON.parse(data);
+
+      for(var i = 0; i <= json.length; i++)
+      {
+          if(json[i]['id'] == req.params.id)
+          {
+              res.json(json[i]);
+              break;
+          }
+      }
+  });
+});
+
+app.post('/api/products/create', function(req, res) {
   fs.readFile(PRODUCTS_FILE, function(err, data) {
     if (err) {
         console.error(err);
@@ -66,7 +74,14 @@ app.post('/api/products/create', function(req, res) {
       id: Date.now(),
       name: req.body.name,
       description: req.body.description,
+      preco: req.body.preco,
       popularity: req.body.popularity,
+      categorySearch: req.body.categorySearch,
+      precoAntigo: req.body.precoAntigo,
+      porcentagemDesconto: req.body.porcentagemDesconto,
+      numeroParcelas: req.body.numeroParcelas,
+      precoParcelas: req.body.precoParcelas,
+      semJuros: req.body.semJuros,
       link: req.body.link,
       images: req.body.images,
       url: req.body.images.url,
@@ -84,15 +99,37 @@ app.post('/api/products/create', function(req, res) {
 });
 
 app.delete('/api/products/delete/:id', function(req, res) {
-  for(var i = 0; i <= dataBase.length; i++)
-    {
-      if(dataBase[i]['id'] == req.params.id)
-      {
-        dataBase.splice(i, 1);
-        res.json(dataBase);
-        break;
+  //for(var i = 0; i <= dataBase.length; i++)
+  //  {
+  //    if(dataBase[i]['id'] == req.params.id)
+  //    {
+  //      dataBase.splice(i, 1);
+  //      res.json(dataBase);
+  //      break;
+  //    }
+  //  }
+  fs.readFile(PRODUCTS_FILE, function (err, data) {
+    if (err) {
+      console.error(err)
+      process.exit(1)
+    }
+    const products = JSON.parse(data)
+
+    for (let i = 0; i <= products.length; i++) {
+      // eslint-disable-next-line eqeqeq
+      if (products[i].id == req.params.id) {
+        products.splice(i, 1)
+        fs.writeFile(PRODUCTS_FILE, JSON.stringify(products, null, 2), function (err) {
+          if (err) {
+            console.error(err)
+            process.exit(1)
+          }
+          res.json(products)
+        })
+        break
       }
     }
+  })
 });
 
 app.listen(PORT, () => {
