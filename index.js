@@ -1,8 +1,14 @@
 const express = require('express');
 const app = express();
 const fs = require('fs')
-// var cors = require('cors')
+var cors = require('cors')
 var bodyParser = require('body-parser');
+
+app.use(cors({
+  origin: '*', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200
+}))
 
 const PORT = process.env.PORT || 8877;
 
