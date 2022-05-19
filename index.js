@@ -12,7 +12,7 @@ var bodyParser = require('body-parser');
 //   optionSuccessStatus: 204
 // }
 // 
-// app.use(cors(corsConfig))
+app.use(cors())
 
 const PORT = process.env.PORT || 8877;
 
@@ -21,15 +21,15 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 var PRODUCTS_FILE = './save.json'
 
-app.use(function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, PUT, PATCH, POST, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  // Disable caching so we'll always get the latest comments.
-  //res.setHeader('Cache-Control', 'no-cache');
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, PUT, PATCH, POST, DELETE');
+//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
+//   res.setHeader('Access-Control-Allow-Credentials', true);
+//   // Disable caching so we'll always get the latest comments.
+//   //res.setHeader('Cache-Control', 'no-cache');
+//   next();
+// });
 
 import dataBase from './save.json'
 
