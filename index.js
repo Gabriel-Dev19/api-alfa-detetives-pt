@@ -5,7 +5,7 @@ var cors = require('cors')
 var bodyParser = require('body-parser');
 
 app.use(cors({
-  origin: ['http://localhost:3000/', 'https://promo-faster.herokuapp.com/', 'http://promo-faster.herokuapp.com/'], 
+  origin: ['http://localhost:3000/', 'https://apipromofaster.vercel.app/', 'https://promo-faster.herokuapp.com/', 'http://promo-faster.herokuapp.com/'], 
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200
 }))
