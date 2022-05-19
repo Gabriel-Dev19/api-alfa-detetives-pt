@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 8877;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-var PRODUCTS_FILE = '../save.json'
+var PRODUCTS_FILE = './save.json'
 
 app.use(function(req, res, next) {
   // Set permissive CORS header - this allows this server to be used only as
