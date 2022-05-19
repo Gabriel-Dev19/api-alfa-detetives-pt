@@ -48,7 +48,7 @@ const allowCors = fn => async (req, res) => {
   return await fn(req, res)
 }
 
-module.exports = allowCors(hander)
+module.exports = allowCors()
 
 import dataBase from './save.json'
 
