@@ -12,6 +12,8 @@ var corsConfig = {
   optionSuccessStatus:200
 }
 
+app.use(cors(corsConfig))
+
 const PORT = process.env.PORT || 8877;
 
 app.use(bodyParser.json());
@@ -33,7 +35,7 @@ var PRODUCTS_FILE = './save.json'
 
 import dataBase from './save.json'
 
-app.get('/api/products', cors(corsConfig), (req, res) => {
+app.get('/api/products', (req, res) => {
   fs.readFile(PRODUCTS_FILE, function(err, data) {
     if (err) {
         console.error(err);
@@ -43,7 +45,7 @@ app.get('/api/products', cors(corsConfig), (req, res) => {
   });
 })
 
-app.get('/api/product/:id', cors(corsConfig), function(req, res) {
+app.get('/api/product/:id', function(req, res) {
 
   fs.readFile(PRODUCTS_FILE, function(err, data) {
       if (err) {
@@ -64,7 +66,7 @@ app.get('/api/product/:id', cors(corsConfig), function(req, res) {
   });
 });
 
-app.post('/api/products/create', cors(corsConfig), function(req, res) {
+app.post('/api/products/create', function(req, res) {
   fs.readFile(PRODUCTS_FILE, function(err, data) {
     if (err) {
         console.error(err);
@@ -100,7 +102,7 @@ app.post('/api/products/create', cors(corsConfig), function(req, res) {
 });
 });
 
-app.delete('/api/products/delete/:id', cors(corsConfig), function(req, res) {
+app.delete('/api/products/delete/:id', function(req, res) {
   //for(var i = 0; i <= dataBase.length; i++)
   //  {
   //    if(dataBase[i]['id'] == req.params.id)
