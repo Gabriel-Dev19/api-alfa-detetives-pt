@@ -41,7 +41,7 @@ app.get('/api/products', (req, res) => {
         console.error(err);
         process.exit(1);
     }
-    res.json(JSON.parse(data));
+    res.send(JSON.parse(data));
   });
 })
 
