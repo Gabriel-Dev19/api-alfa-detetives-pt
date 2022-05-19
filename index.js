@@ -5,12 +5,12 @@ var cors = require('cors')
 var bodyParser = require('body-parser');
 
 var corsConfig = {
-  origin: ['http://localhost:3000', 'https://apipromofaster.vercel.app', 'https://promo-faster.herokuapp.com', 'http://promo-faster.herokuapp.com'], 
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200
+  'origin': '*',
+  'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  'allowedHeaders': ['Content-Type', 'Authorization', 'Acept', 'Origin', 'X-Request-Width'],
+  'credentials': true,            //access-control-allow-credentials:true
+  'optionSuccessStatus':200
 }
-
-// app.use(cors())
 
 const PORT = process.env.PORT || 8877;
 
@@ -19,21 +19,21 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 var PRODUCTS_FILE = './save.json'
 
-app.use(function(req, res, next) {
-  // Set permissive CORS header - this allows this server to be used only as
-  // an API server in conjunction with something like webpack-dev-server.
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Acept, Origin, X-Request-Width');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,PATCH,POST,DELETE');
-
-  // Disable caching so we'll always get the latest comments.
-  res.setHeader('Cache-Control', 'no-cache');
-  next();
-});
+// app.use(function(req, res, next) {
+//   // Set permissive CORS header - this allows this server to be used only as
+//   // an API server in conjunction with something like webpack-dev-server.
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Acept, Origin, X-Request-Width');
+//   res.setHeader('Access-Control-Allow-Methods', ['GET', 'PUT', 'PATCH', 'POST', 'DELETE']);
+// 
+//   // Disable caching so we'll always get the latest comments.
+//   res.setHeader('Cache-Control', 'no-cache');
+//   next();
+// });
 
 import dataBase from './save.json'
 
-app.get('/api/products', (req, res) => {
+app.get('/api/products', cors(corsConfig), (req, res) => {
   fs.readFile(PRODUCTS_FILE, function(err, data) {
     if (err) {
         console.error(err);
@@ -43,7 +43,7 @@ app.get('/api/products', (req, res) => {
   });
 })
 
-app.get('/api/product/:id', function(req, res) {
+app.get('/api/product/:id', cors(corsConfig), function(req, res) {
 
   fs.readFile(PRODUCTS_FILE, function(err, data) {
       if (err) {
@@ -64,7 +64,7 @@ app.get('/api/product/:id', function(req, res) {
   });
 });
 
-app.post('/api/products/create', function(req, res) {
+app.post('/api/products/create', cors(corsConfig), function(req, res) {
   fs.readFile(PRODUCTS_FILE, function(err, data) {
     if (err) {
         console.error(err);
@@ -100,7 +100,7 @@ app.post('/api/products/create', function(req, res) {
 });
 });
 
-app.delete('/api/products/delete/:id', function(req, res) {
+app.delete('/api/products/delete/:id', cors(corsConfig), function(req, res) {
   //for(var i = 0; i <= dataBase.length; i++)
   //  {
   //    if(dataBase[i]['id'] == req.params.id)
