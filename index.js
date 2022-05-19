@@ -31,8 +31,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-import dataBase from './save.json'
-
 app.get('/api/products', (req, res) => {
   fs.readFile(PRODUCTS_FILE, function(err, data) {
     if (err) {
