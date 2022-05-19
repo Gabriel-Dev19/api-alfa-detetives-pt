@@ -29,6 +29,8 @@ app.use(function(req, res, next) {
   next();
 });
 
+import dataBase from './save.json'
+
 app.get("/", (req, res) => {
   res.send("Express on Vercel");
 });
