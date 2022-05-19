@@ -4,15 +4,15 @@ const fs = require('fs')
 var cors = require('cors')
 var bodyParser = require('body-parser');
 
-var corsConfig = {
-  origin: 'https://promo-faster.herokuapp.com',
-  methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
-  allowedHeaders: 'Content-Type',
-  credentials: true,            //access-control-allow-credentials:true
-  optionSuccessStatus: 204
-}
-
-app.use(cors(corsConfig))
+// var corsConfig = {
+//   origin: 'https://promo-faster.herokuapp.com',
+//   methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
+//   allowedHeaders: 'Access-Control-Allow-Headers, Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Allow-Methods, Access-Control-Allow-Origin, Access-Control-Request-Method, Access-Control-Request-Headers',
+//   credentials: true,            //access-control-allow-credentials:true
+//   optionSuccessStatus: 204
+// }
+// 
+// app.use(cors(corsConfig))
 
 const PORT = process.env.PORT || 8877;
 
@@ -22,15 +22,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 var PRODUCTS_FILE = './save.json'
 
 app.use(function(req, res, next) {
-  // Set permissive CORS header - this allows this server to be used only as
-  // an API server in conjunction with something like webpack-dev-server.
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-//res.setHeader('Access-Control-Allow-Headers, Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Allow-Methods, Access-Control-Allow-Origin, Access-Control-Request-Method, Access-Control-Request-Headers');
   res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, PUT, PATCH, POST, DELETE');
-
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
   // Disable caching so we'll always get the latest comments.
-  res.setHeader('Cache-Control', 'no-cache');
+  //res.setHeader('Cache-Control', 'no-cache');
+  next();
 });
 
 import dataBase from './save.json'
