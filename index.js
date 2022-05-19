@@ -10,7 +10,7 @@ var corsConfig = {
   optionSuccessStatus:200
 }
 
-app.use(cors())
+app.use(cors(corsConfig))
 
 const PORT = process.env.PORT || 8877;
 
