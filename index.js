@@ -5,11 +5,11 @@ var cors = require('cors')
 var bodyParser = require('body-parser');
 
 // var corsConfig = {
-//   origin: '*',
+//   origin: ['http://localhost:3000', 'https://promo-faster.herokuapp.com'],
 //   methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
-//   allowedHeaders: '',
+//   allowedHeaders: 'Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Allow-Methods, Access-Control-Allow-Origin, Access-Control-Request-Method, Access-Control-Request-Headers',
 //   credentials: true,            //access-control-allow-credentials:true
-//   optionSuccessStatus:200
+//   optionSuccessStatus: 200
 // }
 // 
 // app.use(cors(corsConfig))
@@ -26,7 +26,7 @@ app.use(function(req, res, next) {
   // an API server in conjunction with something like webpack-dev-server.
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Allow-Methods, Access-Control-Allow-Origin, Access-Control-Request-Method, Access-Control-Request-Headers');
+  res.setHeader('Access-Control-Allow-Headers, Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Allow-Methods, Access-Control-Allow-Origin, Access-Control-Request-Method, Access-Control-Request-Headers');
   res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, PUT, PATCH, POST, DELETE');
 
   // Disable caching so we'll always get the latest comments.
