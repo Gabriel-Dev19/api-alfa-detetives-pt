@@ -3,18 +3,19 @@ const app = express();
 const fs = require('fs')
 var cors = require('cors')
 var bodyParser = require('body-parser');
-const PORT = process.env.PORT || 8877;
 var PRODUCTS_FILE = './save.json'
 
-var corsConfig = {
+app.use(cors({
   origin: ['http://localhost:3000', 'https://apipromofaster.vercel.app', 'https://promo-faster.herokuapp.com', 'http://promo-faster.herokuapp.com'], 
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200
-}
+}))
 
-app.use(cors(corsConfig))
+const PORT = process.env.PORT || 8877;
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
 
 app.use(function(req, res, next) {
   // Set permissive CORS header - this allows this server to be used only as
@@ -26,6 +27,10 @@ app.use(function(req, res, next) {
   // Disable caching so we'll always get the latest comments.
   res.setHeader('Cache-Control', 'no-cache');
   next();
+});
+
+app.get("/", (req, res) => {
+  res.send("Express on Vercel");
 });
 
 app.get('/api/products', (req, res) => {
