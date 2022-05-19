@@ -29,7 +29,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-let dataBase = []
+import dataBase from './save.json'
 
 app.get("/", (req, res) => {
   res.send("Express on Vercel");
