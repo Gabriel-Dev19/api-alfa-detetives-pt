@@ -4,15 +4,14 @@ const fs = require('fs')
 var cors = require('cors')
 var bodyParser = require('body-parser');
 
-// var corsConfig = {
-//   origin: 'https://promo-faster.herokuapp.com',
-//   methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
-//   allowedHeaders: 'Access-Control-Allow-Headers, Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Allow-Methods, Access-Control-Allow-Origin, Access-Control-Request-Method, Access-Control-Request-Headers',
-//   credentials: true,            //access-control-allow-credentials:true
-//   optionSuccessStatus: 204
-// }
-// 
-//app.use(cors())
+app.use((req, res, next) => {
+	//Qual site tem permissão de realizar a conexão, no exemplo abaixo está o "*" indicando que qualquer site pode fazer a conexão
+    res.header("Access-Control-Allow-Origin", "*");
+	//Quais são os métodos que a conexão pode realizar na API
+    res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+    app.use(cors());
+    next();
+});
 
 const PORT = process.env.PORT || 8877;
 
@@ -21,15 +20,15 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 var PRODUCTS_FILE = './save.json'
 
-app.use(function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, PUT, PATCH, POST, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  // Disable caching so we'll always get the latest comments.
-  //res.setHeader('Cache-Control', 'no-cache');
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, PUT, PATCH, POST, DELETE');
+//   res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+//   res.setHeader('Access-Control-Allow-Credentials', true);
+//   // Disable caching so we'll always get the latest comments.
+//   //res.setHeader('Cache-Control', 'no-cache');
+//   next();
+// });
 
 import dataBase from './save.json'
 
