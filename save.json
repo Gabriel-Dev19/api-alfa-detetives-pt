@@ -1,1 +1,117 @@
-[{"id":1652300240489,"name":"","description":"","preco":"","popularity":"","categorySearch":"","precoAntigo":"","porcentagemDesconto":"","numeroParcelas":"","precoParcelas":"","semJuros":false,"link":"","images":[]}]
+[
+  {
+    "distrito": "detective-privado-em-Aveiro",
+    "name": "Aveiro",
+    "text": "Algum texto qualquer do distrito de Aveiro",
+    "cidades": [
+      {
+        "cidade": "detective-privado-em-Agueda",
+        "name": "Águeda",
+        "text": "Algum texto qualquer do cidade de Águeda"
+      },
+      {
+        "cidade": "detective-privado-em-Outra-Coisa",
+        "name": "Outra coisa",
+        "text": "Algum texto qualquer do cidade de Outra coisa"
+      },
+      {
+        "cidade": "detective-privado-em-Alguma-Coisa",
+        "name": "Alguma Coisa",
+        "text": "Algum texto qualquer do cidade de Alguma Coisa"
+      }
+    ]
+  },
+  {
+    "distrito": "detective-privado-em-Braga",
+    "name": "Braga",
+    "text": "Algum texto qualquer do distrito de Braga",
+    "cidades": [
+      {
+        "cidade": "detective-privado-em-Agueda",
+        "name": "Águeda",
+        "text": "Algum texto qualquer do cidade de Águeda"
+      },
+      {
+        "cidade": "detective-privado-em-Outra-Coisa",
+        "name": "Outra coisa",
+        "text": "Algum texto qualquer do cidade de Outra coisa"
+      },
+      {
+        "cidade": "detective-privado-em-Alguma-Coisa",
+        "name": "Alguma Coisa",
+        "text": "Algum texto qualquer do cidade de Alguma Coisa"
+      }
+    ]
+  },
+  {
+    "distrito": "detective-privado-em-Porto",
+    "name": "Porto",
+    "text": "Algum texto qualquer do distrito de Porto",
+    "cidades": [
+      {
+        "cidade": "detective-privado-em-Agueda",
+        "name": "Águeda",
+        "text": "Algum texto qualquer do cidade de Águeda"
+      },
+      {
+        "cidade": "detective-privado-em-Outra-Coisa",
+        "name": "Outra coisa",
+        "text": "Algum texto qualquer do cidade de Outra coisa"
+      },
+      {
+        "cidade": "detective-privado-em-Alguma-Coisa",
+        "name": "Alguma Coisa",
+        "text": "Algum texto qualquer do cidade de Alguma Coisa"
+      }
+    ]
+  },
+  {
+    "distrito": "detective-privado-em-Juremal",
+    "name": "Juremal",
+    "text": "Algum texto qualquer do distrito de Juremal",
+    "cidades": [
+      {
+        "cidade": "detective-privado-em-Agueda",
+        "name": "Águeda",
+        "text": "Algum texto qualquer do cidade de Águeda"
+      },
+      {
+        "cidade": "detective-privado-em-Outra-Coisa",
+        "name": "Outra coisa",
+        "text": "Algum texto qualquer do cidade de Outra coisa"
+      },
+      {
+        "cidade": "detective-privado-em-Alguma-Coisa",
+        "name": "Alguma Coisa",
+        "text": "Algum texto qualquer do cidade de Alguma Coisa"
+      }
+    ]
+  },
+  {
+    "distrito": "detective-privado-em-Dyebson",
+    "name": "Dyebson",
+    "text": "Algum texto qualquer do distrito de Dyebson",
+    "cidades": [
+      {
+        "cidade": "detective-privado-em-Agueda",
+        "name": "Águeda",
+        "text": "Algum texto qualquer do cidade de Águeda"
+      },
+      {
+        "cidade": "detective-privado-em-Outra-Coisa",
+        "name": "Outra coisa",
+        "text": "Algum texto qualquer do cidade de Outra coisa"
+      },
+      {
+        "cidade": "detective-privado-em-Alguma-Coisa",
+        "name": "Alguma Coisa",
+        "text": "Algum texto qualquer do cidade de Alguma Coisa"
+      },
+      {
+        "cidade": "detective-privado-em-Alguma-Coisa",
+        "name": "Alguma Coisa",
+        "text": "Algum texto qualquer do cidade de Alguma Coisa"
+      }
+    ]
+  }
+]
